@@ -1,0 +1,15 @@
+{
+  "cloudwatch.emitMetrics": true,
+  "firehose.endpoint": "firehose.us-west-2.amazonaws.com",
+  
+  "flows": [
+    {
+      "filePattern": "/tmp/basketball.log*",
+      "deliveryStream": "BASKETBALL_STREAM"
+    },
+    {
+      "filePattern": "/tmp/baseball.log*",
+      "deliveryStream": "BASEBALL_STREAM"
+    }
+  ]
+}

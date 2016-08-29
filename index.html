@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<script type="text/javascript">
+document.onload = setInterval(updateStats, 5000);
+function updateStats() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            var resp = JSON.parse(xhttp.responseText);
+            document.getElementById("baseball_count").textContent = resp.baseball_count;            document.getElementById("basketball_count").textContent = resp.             basketball_count;
+        }
+    };
+    xhttp.open("GET", "stats.json", true);
+    xhttp.send();
+}
+</script>
+<body>
+    <p>Total number of tweets mentioning terms in the last 10 minutes...</p>
+    <table id="stat">
+        <tr>
+            <td>"baseball":</td>
+            <td id="baseball_count">0</td>
+        </tr>
+        <tr>
+            <td>"basketball":</td>
+            <td id="basketball_count">0</td>
+        </tr>
+    </table>
+    <p>
+        Note:
+        <li>This table is updated every 5 seconds.</li>
+        <li>Kinesis streams are configured to copy records to Redshift every 2 minutes though</li>
+    </p>
+</body> 
+</html>
