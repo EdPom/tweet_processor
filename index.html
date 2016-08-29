@@ -8,7 +8,8 @@ function updateStats() {
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             var resp = JSON.parse(xhttp.responseText);
-            document.getElementById("baseball_count").textContent = resp.baseball_count;            document.getElementById("basketball_count").textContent = resp.             basketball_count;
+            document.getElementById("baseball_count").textContent = resp.baseball_count;
+            document.getElementById("basketball_count").textContent = resp.basketball_count;
         }
     };
     xhttp.open("GET", "stats.json", true);
